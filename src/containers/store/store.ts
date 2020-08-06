@@ -1,7 +1,7 @@
 import Category from './../entity/category.entity';
 import Product from './../entity/product.entity';
 
-interface store {
+export interface store {
     categoryList: Category[],
     isCategoryFetched: boolean,
     isCategoryFetchInProgress: boolean,

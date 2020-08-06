@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 function SingleProductComp(props: any) {
   const classes = useStyles();
   return (
-    <Grid item md={3} key={props.index}>
+    
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -54,7 +54,6 @@ function SingleProductComp(props: any) {
               </Button>
             </CardActions>
           </Card>
-        </Grid>
   );
 
   

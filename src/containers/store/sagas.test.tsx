@@ -57,17 +57,17 @@ test('fetch category Saga test', (assert) => {
     assert.end()
   });
 
-  test('practire', async (assert) => {
-    const dispatchedAction: any = []
+  // test('practire', async (assert) => {
+  //   const dispatchedAction: any = []
 
-    const fakeStore = {
-      getState: () => (initialState),
-      dispatch: (action: any) => dispatchedAction.push(action)
-    }
+  //   const fakeStore = {
+  //     getState: () => (initialState),
+  //     dispatch: (action: any) => dispatchedAction.push(action)
+  //   }
 
-    await runSaga(fakeStore, fetchCategory).done;
+  //   await runSaga(fakeStore, fetchCategory).done;
 
-    expect(1).toBe(1)
-    expect(dispatchedAction).toContainEqual('tets')
+  //   expect(1).toBe(1)
+  //   expect(dispatchedAction).toContainEqual('tets')
    
-  });
+  // });

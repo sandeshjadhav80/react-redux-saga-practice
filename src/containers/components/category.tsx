@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import Category from './../entity/category.entity';
 import {FETCH_CATEGORY} from './../store/actions/actions';
 import SingleCategoryComp from './single-category';
+import {selectCategory} from './../store/reducers/reducer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,7 +73,7 @@ function CategoryComp(props: CategoryProps) {
 
 const mapStateToProps = (state: any) => {
   return {
-    categoryList: state.categoryList,
+    categoryList: selectCategory(state),
     isCategoryFetched: state.isCategoryFetched,
     isCategoryFetchInProgress: state.isCategoryFetchInProgress,
     isCategoryFetchFailed: state.isCategoryFetchFailed,

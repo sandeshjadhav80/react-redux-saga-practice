@@ -11,11 +11,12 @@ import {connect} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Skeleton from '@material-ui/lab/Skeleton';
+import {Link} from 'react-router-dom';
 
 // custom
 import Product from './../entity/product.entity';
 import SingleProductComp from './single-product';
-
+import {selectProduct} from './../store/reducers/reducer';
 
 const useStyles = makeStyles({
   root: {
@@ -64,7 +65,12 @@ function ProductComp(props: ProductCompProps) {
         </Grid>
         {
           props.productList.map((product: Product, index:number) => (
-           <SingleProductComp product={product} index={index} />
+            
+              <Grid item md={3} key={index}>
+                <Link to={"/product-details/" + product.productId}>
+                  <SingleProductComp product={product} index={index} />
+                </Link>
+              </Grid>
           ))
         }
         
@@ -78,7 +84,7 @@ function ProductComp(props: ProductCompProps) {
 
 const mapStateToProps = (state: any) => {
   return {
-    productList: state.productList,
+    productList: selectProduct(state),
     isProductFetched: state.isProductFetched,
     isProductFetchInProgress: state.isProductFetchInProgress,
     isProductFetchFailed: state.isProductFetchFailed,

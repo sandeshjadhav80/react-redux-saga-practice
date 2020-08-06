@@ -5,18 +5,25 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CategoryComp from './category';
 import ProductsComp from './products';
+import Category from './../entity/category.entity';
+import Product from './../entity/product.entity';
+
 
 import {connect} from 'react-redux';
 import {FETCH_CATEGORY, FETCH_PRODUCTS} from './../store/actions/actions';
 
-class Home extends React.Component<{dispatch: any}, {}> {
+class Home extends React.Component<{dispatch: any, categoryList: Category[], productList: Product[]}, {}> {
 
     constructor(props: any){
         super(props);
     }
     componentDidMount() {
-        this.props.dispatch({type: FETCH_CATEGORY, value: {isCategoryFetchInProgress: true}});
-        this.props.dispatch({type: FETCH_PRODUCTS, value: {isProductFetchInProgress: true}});
+        if(this.props.categoryList.length === 0) {
+            this.props.dispatch({type: FETCH_CATEGORY, value: {isCategoryFetchInProgress: true}});
+        }
+        if(this.props.productList.length === 0) {
+            this.props.dispatch({type: FETCH_PRODUCTS, value: {isProductFetchInProgress: true}});
+        }
     }
     render() {
         return (
@@ -34,7 +41,8 @@ class Home extends React.Component<{dispatch: any}, {}> {
 }
 const mapStateToProps = (state: any) => {
     return {
-      
+      categoryList: state.categoryList,
+      productList: state.productList
     };
   }
   const mapDispatchToProps = (dispatch: any) => {
